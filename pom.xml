@@ -67,6 +67,13 @@
 		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		
+		<!-- 静态页面实时刷新 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+		
 		<!--单元测试-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

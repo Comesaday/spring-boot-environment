@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			table{
+				width: 100%;
+				height: 100%;
+			}
+			tr th{
+				width: 25%;
+				border-bottom: 1px solid red;
+			}
+			tr td{
+				width: 25%;
+				text-align: center;
+			}
+			.main2{
+				margin: 0 auto;
+				width: 78%;
+				padding-top: 30px;
+				text-align: right;
+			}
+			.main2 a{
+				margin-left: 12px; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main1">
+			<table>
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>账号</th>
+						<th>密码</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user:${pageBean.list}">
+						<td><span th:text="${user.id}"></span></td>
+						<td><span th:text="${user.account}"></span></td>
+						<td><span th:text="${user.password}"></span></td>
+						<td><a th:href="@{'/del?id='+${user.id}+'&amp;currentPage='+${pageBean.currentPage}}">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="main2">
+			第<span th:text="${pageBean.currentPage}"></span>/<span th:text="${pageBean.totalPage}"></span>页&nbsp;&nbsp;
+			<a th:href="@{viewUser?currentPage=1}" th:unless="${pageBean.hasFirst == false}"><font style="color: green;">首页</font></a>
+			<a th:href="@{javascript:void(0)}" th:unless="${pageBean.hasFirst == true}"><font style="color: red;">首页</font></a>	
+			
+			<a th:href="@{'viewUser?currentPage='+${pageBean.currentPage - 1}}" th:unless="${pageBean.hasPre == false}"><font style="color: green;">上一页</font></a>
+			<a th:href="@{javascript:void(0)}" th:unless="${pageBean.hasPre == true}"><font style="color: red;">上一页</font></a>	
+			
+			<a th:href="@{'viewUser?currentPage='+${pageBean.currentPage + 1}}" th:unless="${pageBean.hasNext == false}"><font style="color: green;">下一页</font></a>
+			<a th:href="@{javascript:void(0)}" th:unless="${pageBean.hasNext == true}"><font style="color: red;">下一页</font></a>	
+			
+			<a th:href="@{'viewUser?currentPage='+${pageBean.totalPage}}" th:unless="${pageBean.hasLast == false}"><font style="color: green;">尾页</font></a>
+			<a th:href="@{javascript:void(0)}" th:unless="${pageBean.hasLast == true}"><font style="color: red;">尾页</font></a>		
+		</div>
+	</body>
+</html>

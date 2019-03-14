@@ -3,12 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>用户登录页面</title>
+<style type="text/css">
+	#container{
+		margin: 0;
+		padding: 0;
+	}
+	#container .content{
+		margin: 0 auto;
+	}
+</style>
 </head>
 <body>
-	<form action="/login" method="post">
-		<input name="account" type="text">
-		<input name="password" type="text">
-		<input type="submit" value="登陆">
-	</form>
+	<div id="container">
+		<div class="content">
+			<form action="/login" method="post">
+				<input name="account" type="text"><br>
+				<input name="password" type="text">
+				<input type="submit" value="登陆">
+			</form>
+		</div>
+	</div>
 </body>
 </html>
